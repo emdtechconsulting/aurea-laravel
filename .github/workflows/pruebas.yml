@@ -1,0 +1,42 @@
+name: Pruebas AUREA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Preparar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, pdo_sqlite, sqlite3, dom, curl, zip
+          tools: composer:v2
+          coverage: none
+
+      - name: Instalar dependencias
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Preparar configuración de pruebas
+        run: |
+          cp .env.example .env
+          touch database/database.sqlite
+          php artisan key:generate
+          php artisan config:clear
+
+      - name: Ejecutar pruebas
+        run: php artisan test
