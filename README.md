@@ -51,3 +51,62 @@ La integración con React/Firebase o una aplicación móvil nativa
 todavía no está implementada.
 
 El código está publicado en GitHub; la aplicación se ejecuta localmente.
+
+## Instalación desde GitHub en Ubuntu
+
+Requisitos: Git, Composer, PHP 8.3 y extensiones curl, DOM/XML,
+mbstring, fileinfo, PDO, pdo_sqlite, sqlite3 y zip.
+
+Ejecuta en una carpeta nueva, separada de cualquier instalación existente:
+
+```bash
+mkdir -p ~/proyectos
+cd ~/proyectos
+git clone https://github.com/emdtechconsulting/aurea-laravel.git aurea-validacion
+cd aurea-validacion
+composer install
+cp .env.example .env
+touch database/database.sqlite
+nano .env
+```
+
+En .env configura estos valores. Agrega SESSION_COOKIE si no existe:
+
+```dotenv
+APP_URL=http://localhost:8001
+SESSION_COOKIE=aurea_validacion_session
+SANCTUM_STATEFUL_DOMAINS=localhost:8001,127.0.0.1:8001,localhost:5173
+```
+
+Guarda .env y continúa:
+
+```bash
+php artisan key:generate
+php artisan config:clear
+php artisan migrate
+php artisan db:seed
+php artisan aurea:admin
+php artisan test
+php artisan serve --host=127.0.0.1 --port=8001
+```
+
+Elige un correo y una contraseña de al menos 12 caracteres.
+No hay credenciales predeterminadas.
+
+Abre http://localhost:8001. Mantén la terminal abierta mientras usas
+el servidor; detenlo con Ctrl+C.
+
+Esta instalación tiene su propia base de datos y comienza sin pedidos.
+No necesita Node para ejecutar las pantallas Blade incluidas.
+
+artisan serve es para desarrollo. El ambiente principal utiliza
+Nginx y PHP-FPM en el puerto 8080.
+
+Nunca publiques .env, contraseñas, tokens ni bases de datos con clientes.
+Conserva composer.lock para reproducir las dependencias.
+
+## Documentación adicional
+
+- [Validación del laboratorio](docs/VALIDACION.md)
+- [API e integración](docs/API.md)
+- [Plan multiplataforma](docs/PLAN-MULTIPLATAFORMA.md)
