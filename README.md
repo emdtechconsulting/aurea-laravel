@@ -1,4 +1,6 @@
 # AUREA · Laboratorio Laravel
+![Portada de AUREA Laravel Lab](docs/imagenes/aurea-laravel-portada.png)
+
 [![Pruebas AUREA](https://github.com/emdtechconsulting/aurea-laravel/actions/workflows/pruebas.yml/badge.svg)](https://github.com/emdtechconsulting/aurea-laravel/actions/workflows/pruebas.yml)
 
 
