@@ -1,0 +1,14 @@
+AUREA - Minilaboratorio Laravel
+
+1. Lee README.md: contiene instalación Windows, celular por Wi-Fi y ambiente de pruebas.
+2. Instala Laravel Herd para contar con PHP >=8.3 y Composer.
+3. Abre PowerShell en esta carpeta y ejecuta:
+   powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1
+4. Crea tu usuario:
+   php artisan aurea:admin
+5. Inicia:
+   php artisan serve --host=127.0.0.1 --port=8000
+6. Abre http://localhost:8000
+
+Lee docs/API.md para conexión React o móvil y docs/VALIDACION.md para pruebas realizadas.
+Las dependencias se descargan durante la instalación. No hay usuario/contraseña de fábrica.
