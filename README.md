@@ -1,4 +1,6 @@
 # AUREA · Laboratorio Laravel
+[![Pruebas AUREA](https://github.com/emdtechconsulting/aurea-laravel/actions/workflows/pruebas.yml/badge.svg)](https://github.com/emdtechconsulting/aurea-laravel/actions/workflows/pruebas.yml)
+
 
 Sistema de pedidos de AUREA, Sanguchitos y más.
 Proyecto de aprendizaje y portafolio de EMD Tech Consulting.
